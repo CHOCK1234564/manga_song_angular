@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @musique.title %>
+</p>
+
+<p>
+  <b>chemin:</b>
+  <%= @musique.name %>
+</p>
+
+<ul>
+	<% @musique.comments.each do |musique| %>
+		<li> <%= musique.content %> </li>
+	<%end%>
+</ul>
+
+<%= form_for(@musique.comments.new) do |f| %>
+	<%= f.hidden_field :music_id, :value => @musique.id %>
+	<div class="field">
+	<%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </div>
+   <div class="actions">
+    <%= f.submit %>
+  </div>
+  <%end%>
+
+
+<%= link_to 'Edit', edit_musique_path(@musique) %> |
+<%= link_to 'Back', musiques_path %>

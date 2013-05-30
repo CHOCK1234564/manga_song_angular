@@ -1,0 +1,49 @@
+<button class="control play" ng-click="playTrack()" ng-hide="is_playing">Play</button>
+<button class="control pause" ng-click="pause()" ng-show="is_playing">Pause</button>
+
+
+<ul>
+    <li ng-repeat="musique in musiques">
+    	{{ musique.id == current_music.id }}
+      <p ng-click="playTrack(musique)">{{musique.title}}<p>
+      <p>{{musique.name}}</p>
+      <a href="#/musiques/{{musique.id}}">détail</a>
+    </li>
+ </ul>
+
+
+
+
+<!--
+ <% @musiques.each do |musique| %>
+  <tr>
+    <td><%= musique.title %></td>
+    <td><%= musique.comments.count %></td>
+    <td><audio controls id="video1"
+  src="\music\<%= musique.name%>">
+Your user agent does not support the HTML5 Audio element.
+</audio> </td>
+    <% if user_signed_in? %>
+    <td><%= link_to 'Show', musique %></td>
+    <td><%= link_to 'Edit', edit_musique_path(musique) %></td>
+    <td><%= link_to 'Destroy', musique, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% else %>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+
+  <select ng-model="orderProp">
+  <option value="name">By name</option>
+  <option value="title">By snippet </option>
+</select>
+
+
+  <ul>
+    <li ng-repeat="musique in musiques | orderBy:orderProp">
+      {{musique.name}}
+      <p>{{musique.title}}</p>
+      <a href="#/musiques/{{musique.id}}">détail</a>
+    </li>
+  </ul>

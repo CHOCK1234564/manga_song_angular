@@ -1,0 +1,30 @@
+<h1>Manga Songs</h1>
+
+<!--   <%= search_form_for @q do |f| %>
+      <%= f.label 'Rechercher une musique :' %>
+      <%= f.text_field :title_cont %>
+      <%= f.submit %>
+   <% end %>
+-->
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<div ng-view></div>
+
+
+<%= will_paginate @musiques %>
+
+
+<% if user_signed_in? %>
+  <%= link_to 'New Musique', new_musique_path %>
+<% else %>
+<% end %>
